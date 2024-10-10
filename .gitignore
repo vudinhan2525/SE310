@@ -128,7 +128,7 @@ publish/
 ## web deploy settings but do note that will include unencrypted
 ## passwords
 *.pubxml
-
+./packages
 # NuGet Packages Directory
 packages/*
 ## TODO: If the tool you use requires repositories.config

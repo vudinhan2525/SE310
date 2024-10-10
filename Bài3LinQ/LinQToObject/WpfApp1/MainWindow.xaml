@@ -1,0 +1,79 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <StackPanel>
+            <StackPanel.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="LightYellow" Offset="0.0"/>
+                    <GradientStop Color="LightPink" Offset="1.0"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+
+            <Grid Margin="10,10,10,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="0,0,10,0" Background="LightBlue">
+                    <Label Content="Nhập thông tin sản phẩm" HorizontalContentAlignment="Center" Background="LightBlue" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="3*" />
+                            <ColumnDefinition Width="7*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0" Margin="30,0,0,0">
+                            <Label>Mã SP:</Label>
+                            <Label>Tên SP:</Label>
+                            <Label Margin="0,2,0,0">Số lượng:</Label>
+                            <Label Margin="0,2,0,0">Đơn giá:</Label>
+                            <Label Margin="0,3,0,0">Xuất xứ:</Label>
+                            <Label Margin="0,3,0,0">Ngày hết hạn:</Label>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Margin="0,0,20,0">
+                            <TextBox  Height="25" 
+                                      Margin="0,3,0,0"
+                                     Padding="5,5,5,5" 
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Stretch" ></TextBox>
+                            <TextBox Height="25" 
+                                     Padding="5,5,5,5" 
+                                     Margin="0,3,0,0"
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Stretch"></TextBox>
+                            <TextBox Height="25" 
+                                     Padding="5,5,5,5" 
+                                     Margin="0,3,0,0"
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Stretch"></TextBox>
+                            <TextBox Height="25" 
+                                     Padding="5,5,5,5" 
+                                     Margin="0,3,0,0"
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Stretch"></TextBox>
+                            <TextBox Height="25" 
+                                     Padding="5,5,5,5" 
+                                     Margin="0,3,0,0"
+                                     VerticalAlignment="Center" 
+                                     HorizontalAlignment="Stretch"></TextBox>
+                            <DatePicker Height="25" Margin="0,3,0,0" x:Name="datePicker" />
+
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+
+                <!-- Second element in column 1 -->
+                <StackPanel Grid.Column="1">
+                    <Label Content="Chọn chức năng tìm kiếm" HorizontalContentAlignment="Center"  Background="LightGreen" HorizontalAlignment="Stretch" VerticalAlignment="Center" />
+
+                </StackPanel>
+            </Grid>
+
+        </StackPanel>
+    </Grid>
+</Window>
