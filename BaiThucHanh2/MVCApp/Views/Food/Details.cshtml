@@ -1,0 +1,35 @@
+@model MVCApp.Models.Food
+
+<div class="px-12">
+    <h2 class="text-3xl font-bold">@Model.Name</h2>
+    <div class="flex mt-4">
+        <img src="@Model.Image" class="w-[300px] h-[300px] rounded-md" />
+        <div class="ml-8">
+            <p class="text-lg">@Model.Description</p>
+            <p class="text-2xl font-bold mt-4">Price: @Model.Price.ToString("F0") vnđ</p>
+        </div>
+    </div>
+    <a href="/" class="mt-6 inline-block px-4 py-2 text-white bg-blue-600 rounded-md">Back to List</a>
+    <div id="delete-btn" class="mt-6 inline-block px-4 py-2 text-white cursor-pointer bg-red-600 rounded-md">Delete</div>
+</div>
+<script>
+    const deleteBtn = document.getElementById("delete-btn");
+
+    deleteBtn.addEventListener("click", async () => {
+        const foodId = @Model.Id; 
+        const response = await fetch('/Food/DeleteById', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Specify JSON content
+            },
+            body: JSON.stringify({ id: foodId }), // Send the ID as JSON
+        });
+
+        if (response.ok) {
+            alert('Food deleted successfully!');
+            window.location.href = '/'; // Redirect to food list after deletion
+        } else {
+            alert('Failed to delete food. Please try again.');
+        }
+    });
+</script>
