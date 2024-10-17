@@ -53,5 +53,29 @@ namespace MVCApp.Controllers
 
         return Ok();
     }
+
+    [HttpPost("/Food/Update")]
+    public IActionResult Update([FromBody] Food updatedFood) 
+    {
+        if (ModelState.IsValid)
+        {
+            var food = _context.Foods.FirstOrDefault(f => f.Id == updatedFood.Id);
+            if (food == null)
+            {
+                return NotFound();
+            }
+
+            // Update the food properties
+            food.Name = updatedFood.Name;
+            food.Description = updatedFood.Description;
+            food.Price = updatedFood.Price;
+            food.Image = updatedFood.Image;
+
+            _context.SaveChanges();
+            return Ok();
+        }
+        
+        return BadRequest();
+    }
 }
 }

@@ -3,7 +3,7 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class=" px-12">
+<div class=" px-12 ">
     <div class="flex items-center justify-between w-full">
         <h2 class="text-3xl">Food List</h2>
         <div id="openModalBtn" class="px-2 py-2 rounded-md text-white bg-blue-600 font-bold text-sm cursor-pointer ">Thêm món ăn</div>
@@ -11,7 +11,7 @@
     <div class="grid grid-cols-4 gap-8 mt-4">
         @foreach (var food in Model) 
         {
-            <a href="/Food/@food.Id" class="px-4 w-[280px] cursor-pointer transition-all hover:scale-105 rounded-md py-4   border-[1px]">
+            <a href="/Food/@food.Id" class="px-4 cursor-pointer transition-all hover:scale-105 rounded-md py-4   border-[1px]">
                     <div class="w-full rounded-md overflow-hidden  h-[200px] bg-cover bg-center bg-no-repeat" style="background-image: url('@food.Image');">
 
                 </div>

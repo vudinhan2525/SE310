@@ -7,6 +7,27 @@
         <div class="ml-8">
             <p class="text-lg">@Model.Description</p>
             <p class="text-2xl font-bold mt-4">Price: @Model.Price.ToString("F0") vnđ</p>
+
+        <div class="mt-8 w-[400px]">
+            <div class="mb-4">
+                <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
+                <input type="text" name="name" id="name" class="w-full px-2 py-2 rounded-md border-[1px]" value="@Model.Name">
+            </div>
+            <div class="mb-4">
+                <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+                <textarea name="description" id="description" class="w-full px-2 py-2 rounded-md border-[1px]">@Model.Description</textarea>
+            </div>
+            <div class="mb-4">
+                <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                <input type="number" name="price" id="price" class="w-full px-2 py-2 rounded-md border-[1px]" value="@Model.Price">
+            </div>
+            <div class="mb-4">
+                <label for="imageUrl" class="block text-sm font-medium text-gray-700">Image URL</label>
+                <input type="text" name="imageUrl" id="imageUrl" class="w-full px-2 py-2 rounded-md border-[1px]" value="@Model.Image">
+            </div>
+            <input type="hidden" name="id" value="@Model.Id" />
+            <button id="save-btn" class="inline-flex justify-center rounded-md border border-transparent bg-green-500 hover:bg-green-700 py-2 px-4 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-all duration-300">Save Changes</button>
+        </div>
         </div>
     </div>
     <a href="/" class="mt-6 inline-block px-4 py-2 text-white bg-blue-600 rounded-md">Back to List</a>
@@ -30,6 +51,33 @@
             window.location.href = '/'; // Redirect to food list after deletion
         } else {
             alert('Failed to delete food. Please try again.');
+        }
+    });
+    const saveButton = document.getElementById("save-btn");
+    saveButton.addEventListener("click", async (event) => {
+        event.preventDefault(); 
+
+        const updatedFood = {
+            Id: @Model.Id,
+            Name: document.getElementById("name").value,
+            Description: document.getElementById("description").value,
+            Price: parseFloat(document.getElementById("price").value),
+            Image: document.getElementById("imageUrl").value
+        };
+
+        const response = await fetch('/Food/Update', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(updatedFood),
+        });
+
+        if (response.ok) {
+            alert('Food updated successfully!');
+            window.location.href = '/'; // Redirect to food list after update
+        } else {
+            alert('Failed to update food. Please try again.');
         }
     });
 </script>
