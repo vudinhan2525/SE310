@@ -70,6 +70,7 @@ namespace MVCApp.Controllers
             food.Description = updatedFood.Description;
             food.Price = updatedFood.Price;
             food.Image = updatedFood.Image;
+            food.ItemLeft = updatedFood.ItemLeft;
 
             _context.SaveChanges();
             return Ok();
